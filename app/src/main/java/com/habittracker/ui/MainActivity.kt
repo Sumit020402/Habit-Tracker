@@ -67,9 +67,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         adapter = HabitAdapter(
-            onToggle = { habit -> viewModel.toggleComplete(habit) },
-            onDelete = { habit -> confirmDelete(habit) },
-            onEdit   = { habit -> openEditActivity(habit) },
+            onToggle   = { habit -> viewModel.toggleComplete(habit) },
+            onDelete   = { habit -> confirmDelete(habit) },
+            onEdit     = { habit -> openEditActivity(habit) },
             onProgress = { habit ->
                 val intent = Intent(this, CalendarActivity::class.java).apply {
                     putExtra("habit_name", habit.name)
@@ -77,7 +77,9 @@ class MainActivity : AppCompatActivity() {
                     putExtra("history", habit.completionHistory)
                 }
                 startActivity(intent)
-            }
+            },
+            onIncrement = { habit -> viewModel.incrementProgress(habit) }, // ✅ NEW
+            onReset     = { habit -> viewModel.resetTodayProgress(habit) } // ✅ NEW
         )
 
         findViewById<RecyclerView>(R.id.recyclerView).apply {

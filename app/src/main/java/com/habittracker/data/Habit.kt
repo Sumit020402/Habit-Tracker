@@ -15,5 +15,11 @@ data class Habit(
     val isCompletedToday: Boolean = false,
     val lastCompletedDate: String = "",
     val reminderTime: String = "",
-    val completionHistory: String = ""
+    val completionHistory: String = "",
+
+    // ✅ NEW — Daywise fields
+    val activeDays: String = "1,2,3,4,5,6,7",   // 1=Mon...7=Sun, all days default
+    val dailyGoal: String = "",                   // e.g. "8" glasses, "30" mins
+    val goalUnit: String = "",                    // e.g. "glasses", "minutes", "times"
+    val dailyProgress: String = ""                // JSON: {"2026-05-27":"5"}
 ) : Parcelable

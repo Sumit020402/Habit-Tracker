@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,18 +26,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Habit Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxCornerRadiusTopStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+            app:boxCornerRadiusBottomEnd="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etHabitName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Description -->
@@ -47,22 +44,150 @@
             android:layout_height="wrap_content"
             android:hint="Description (optional)"
             android:layout_marginTop="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxCornerRadiusTopStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+            app:boxCornerRadiusBottomEnd="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:minLines="2"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Reminder Section -->
+        <!-- ── Active Days ── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📅 Active Days"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/dayPickerRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView android:id="@+id/chipMon"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Mon" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_day_chip_active"
+                android:textColor="@android:color/white"/>
+            <TextView android:id="@+id/chipTue"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Tue" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_day_chip_active"
+                android:textColor="@android:color/white"/>
+            <TextView android:id="@+id/chipWed"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Wed" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_day_chip_active"
+                android:textColor="@android:color/white"/>
+            <TextView android:id="@+id/chipThu"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Thu" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_day_chip_active"
+                android:textColor="@android:color/white"/>
+            <TextView android:id="@+id/chipFri"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Fri" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_day_chip_active"
+                android:textColor="@android:color/white"/>
+            <TextView android:id="@+id/chipSat"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Sat" android:textSize="11sp" android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_day_chip_inactive"
+                android:textColor="@android:color/darker_gray"/>
+            <TextView android:id="@+id/chipSun"
+                android:layout_width="0dp" android:layout_height="40dp"
+                android:layout_weight="1" android:gravity="center"
+                android:text="Sun" android:textSize="11sp" android:textStyle="bold"
+                android:background="@drawable/bg_day_chip_inactive"
+                android:textColor="@android:color/darker_gray"/>
+
+        </LinearLayout>
+
+        <!-- ── Daily Goal ── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎯 Daily Goal (optional)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set a measurable target e.g. 8 glasses, 30 minutes"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Goal amount"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGoalAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Unit (glasses, mins...)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGoalUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- ── Reminder ── -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +209,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Enable reminder"
-                android:textSize="14sp"
                 android:layout_weight="1"/>
 
             <Button

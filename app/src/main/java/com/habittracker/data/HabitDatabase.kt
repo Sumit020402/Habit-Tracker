@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Habit::class], version = 1)
+@Database(entities = [Habit::class], version = 2)  // ✅ bump version
 abstract class HabitDatabase : RoomDatabase() {
     abstract fun habitDao(): HabitDao
 
@@ -18,7 +18,9 @@ abstract class HabitDatabase : RoomDatabase() {
                     context.applicationContext,
                     HabitDatabase::class.java,
                     "habit_database"
-                ).build().also { INSTANCE = it }
+                )
+                    .fallbackToDestructiveMigration() // ✅ clears old DB on version bump
+                    .build().also { INSTANCE = it }
             }
         }
     }
