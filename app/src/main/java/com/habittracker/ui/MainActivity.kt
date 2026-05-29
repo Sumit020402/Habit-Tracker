@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupFab()
         observeHabits()
+
+        viewModel.resetIfNewDay() // ✅ ADD THIS
     }
 
     private fun requestNotificationPermission() {

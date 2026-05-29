@@ -8,6 +8,10 @@ interface HabitDao {
     @Query("SELECT * FROM habits")
     fun getAllHabits(): LiveData<List<Habit>>
 
+    // ✅ NEW — needed for resetIfNewDay()
+    @Query("SELECT * FROM habits")
+    suspend fun getAllHabitsSync(): List<Habit>
+
     @Query("SELECT * FROM habits WHERE id = :id")
     suspend fun getHabitById(id: Int): Habit?
 
